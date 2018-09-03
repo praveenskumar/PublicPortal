@@ -1,0 +1,26 @@
+{% extends "admin/model/list.html" %}
+
+
+{% block body %}
+
+{{ super() }}
+
+<style>
+  .col-date { width: 7em; }
+  .col-bank_account { width: 20em; }
+  .col-counter_party { width: 10em; }
+  .col-is_refund, .col-gross, .col-net, .col-currency, .col-exchange_rate {
+    width: 7em;
+  }
+  .col-notes { width: 20em; }
+
+  th.col-md-1 { width: 4em; }
+  .list-buttons-column { width: 4em; }
+
+  .col-net, .col-gross {
+    text-align: right;
+  }
+</style>
+
+
+{% endblock %}

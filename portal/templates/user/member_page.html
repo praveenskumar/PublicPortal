@@ -1,0 +1,293 @@
+{% extends "admin/base.html" %}
+
+{% block body %}
+
+
+{% include 'account/important_widgets.html' %}
+
+
+<div class='row'>
+
+  {% if recent_status_change_widget.is_accessible() %}
+  <div class='col-md-6'>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>{{ _('Recent Suspensions or Abandoned') }}</h4>
+        <h6>{{ _('(From 13th Dec onwards)') }}</h6>
+      </div>
+      <div class='panel-body'>
+        <table class='table'>
+          <thead>
+            <tr>
+              <th></th>
+              <th>{{ _('Adwords_id') }}</th>
+              <th>{{ _('Status') }}</th>
+              <th style='width:3em'>{{ _('Remaining Account Budget') }}</th>
+              <th>{{ _('Spent (HKD)') }}</th>
+              <th>{{ _('Updated At') }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for account, account_version in recent_status_change_widget.get_data() %}
+            <tr>
+              <td>
+                <a href="{{ url_for(get_account_view_endpoint(suffix='details_view'), id=account.id) }}">
+                  <span class="fa fa-pencil glyphicon glyphicon-eye-open"></span>
+                </a>
+                <a href="{{ url_for(get_account_view_endpoint(suffix='edit_view'), id=account.id) }}">
+                  <span class="fa fa-pencil glyphicon glyphicon-pencil"></span>
+                </a>
+              </td>
+              <td>
+                {{ account.adwords_id }}
+              </td>
+              <td>
+                {% set from, to = account_version.changeset['status'] %}
+                {{ account_version.updated_at.strftime('%m/%d') }}: {{ from.value }} &#8594; {{ to.value }}
+              </td>
+              <td>
+                {{ account.get_remaining_account_budget() }}
+              </td>
+              <td>{{ account.spent_in_hkd|format_currency }}</td>
+              <td>{{ account.updated_at|format_datetime }}</td>
+            </tr>
+            <tr class='merge-tr-above'>
+              <td></td>
+              <td colspan='5'>
+                {{ account.vendor.company_name }}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+
+  {% if account_history_widget.is_accessible() %}
+  <div class='col-md-6'>
+    <div class="panel panel-default" style='max-height:500px; overflow-y:scroll'>
+
+      <div class="panel-heading">
+        <h4>{{ _('Updates Today') }}</h4>
+      </div>
+
+      <div class="panel-body">
+        <table class='table'>
+          <tbody>
+            {% for history in account_history_widget.get_data() %}
+            {{ history.render() | safe }}
+            {% else %}
+            {{ _('No Updates today.') }}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+</div> {# row #}
+
+
+
+{% if total_spend_widget.is_accessible() %}
+{% set users, lor = total_spend_widget.get_data() %}
+
+<div class="panel panel-default">
+
+  <div class="panel-heading">
+    <h4>{{ _('Total Spending') }}</h4>
+  </div>
+
+  <div class="panel-body">
+
+<table class='table table-bordered'>
+  <thead>
+    <tr>
+      <th></th>
+      {% for r in lor %}
+      <th class='text-right'>{{ _(r['header']) }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for client_id, name in users %}
+    <tr>
+      <td>{{ client_id }} {{ name }}</td>
+
+      {% for r in lor %}
+      <td class='text-right'>
+        {% if client_id in r %}
+
+          {% set value = r[client_id] %}
+          {% set prevkey = loop.index0 - 1 %}
+
+          {% if loop.index0 != 0 and
+                client_id in lor[prevkey] and
+                value > lor[prevkey][client_id] %}
+            <span style='color:#00FF00' class="glyphicon glyphicon-arrow-up"></span>
+          {% endif %}
+
+          {% if value %}
+            {{ value|format_currency }}
+          {% endif %}
+
+        {% endif %}
+      </td>
+      {% endfor %}
+
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+
+  </div>
+
+</div>
+
+{% endif %}
+
+
+
+{% if high_spend_widget.is_accessible() %}
+{% set accounts = high_spend_widget.get_data() %}
+
+<div class="panel panel-default">
+
+  <div class="panel-heading">
+    <h4>{{ _('High Spend Accounts') }}</h4>
+  </div>
+
+  <div class="panel-body">
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>{{ _('Adwords_id') }}</th>
+          <th>{{ _('Status') }}</th>
+          <th>{{ _('Client ID') }}</th>
+          <th>{{ _('Spent (HKD)') }}</th>
+          <th>{{ _('Vendor Name') }}</th>
+          <th>{{ _('Vps') }}</th>
+          <th>{{ _('Suspended On') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for account in accounts %}
+        <tr>
+          <td>{{ account.adwords_id }}</td>
+          <td>{{ account.status.value }}</td>
+          <td>{{ account.client.username }}</td>
+          <td>{{ account.spent_in_hkd|format_currency }}</td>
+          <td>{{ account.vendor.company_name }}</td>
+          <td>{{ account.VPSs_jinja }}</td>
+          <td>{{ account.suspended_on|to_hktz|format_datetime }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+{% endif %}
+
+
+{% macro render_accounts(accounts, title) %}
+<h4>{{ title }}</h4>
+
+{% if not accounts %}
+<h5>{{ _('No Active Accounts') }}</h5>
+{% else %}
+<table class='table table-compact'>
+  <thead>
+    <th>{{ _('Adwords_id') }}</th>
+    <th>{{ _('Daily Budget') }}</th>
+    <th>{{ _('Spent (HKD)') }}</th>
+  </thead>
+  <tbody>
+    {% for account in accounts %}
+    <tr>
+      <td>{{ account.adwords_id }}</td>
+      <td>{{ account.daily_budget }}</td>
+      <td>{{ account.spent_in_hkd }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+{% endmacro %}
+
+{#
+{% if active_accounts_widget.is_accessible() %}
+{% set bank = active_accounts_widget.get_data() %}
+
+<div class="panel panel-default col-lg-9">
+
+  <div class="panel-heading">
+    <h4>{{ _('Active Accounts') }}</h4>
+  </div>
+
+  <div class="panel-body">
+    <h3>
+      How To Read:
+      {{ _("Total Spent In HKD For Account") }}
+      <span style="color:#d3d3d3;">({{ _("Daily Budget") }})</span>
+    </h3>
+
+<table class='table table-bordered'>
+
+  {% for user_id, unified in bank %}
+  <tr>
+    <th colspan="100"><h4>{{ user_id }}</h4></th>
+  </tr>
+
+  {% if unified[0] %}
+  {% set dts = active_accounts_widget.get_dts() %}
+  <tr>
+    <th>{{ _('Adwords ID') }}</th>
+    <th>{{ dts[0]|to_hktz|format_datetime }}</th>
+    <th>{{ dts[1]|to_hktz|format_datetime }}</th>
+    <th>{{ dts[2]|to_hktz|format_datetime }}</th>
+  </tr>
+  {% endif %}
+
+  {% macro render_cell(fake_account) %}
+    {% if fake_account %}
+    {{ fake_account.spent_in_hkd|format_currency }}
+    <span style="color:#d3d3d3;">({{ fake_account.daily_budget|format_currency }})</span>
+    {% endif %}
+  {% endmacro %}
+
+  {% for adwords_id in unified[0] %}
+  <tr>
+    <td>{{ adwords_id }}</td>
+    <td>
+      {{ render_cell(unified[1][loop.index0]) }}
+    </td>
+    <td>
+      {{ render_cell(unified[2][loop.index0]) }}
+    </td>
+    <td>
+      {{ render_cell(unified[3][loop.index0]) }}
+    </td>
+  </tr>
+  {% else %}
+    <td colspan="100">No Accounts</td>
+  {% endfor %}
+
+  {% endfor %}
+</table>
+
+  </div>
+</div>
+
+{% endif %}
+#}
+
+{% endblock %}

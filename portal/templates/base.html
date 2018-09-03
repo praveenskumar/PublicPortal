@@ -1,0 +1,10 @@
+{# Flask-User uses a file located at "templates/base.html"
+so we will just overwrite this to extend to our base #}
+
+{% extends "admin/base.html" %}
+
+{% block body %}
+{# Flask-User uses 'main'. Flask-Admin uses 'body'.
+So we will just render one bloc into another completely #}
+{% block main %}{% endblock %}
+{% endblock %}

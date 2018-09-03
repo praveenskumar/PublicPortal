@@ -1,0 +1,868 @@
+# Chinese translations for PROJECT.
+# Copyright (C) 2017 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2018-03-14 20:16+0800\n"
+"PO-Revision-Date: 2018-03-14 20:17+0800\n"
+"Last-Translator: \n"
+"Language: zh\n"
+"Language-Team: zh <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.5.1\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#: portal/factory.py:155
+msgid "Budget"
+msgstr "预算"
+
+#: portal/factory.py:156
+msgid "Appointments"
+msgstr "约会"
+
+#: portal/factory.py:159 portal/factory.py:160 portal/permission/views.py:22
+msgid "User"
+msgstr "用户"
+
+#: portal/factory.py:166
+msgid "Account"
+msgstr "账号管理"
+
+#: portal/factory.py:170
+msgid "Account (Admin)"
+msgstr "账号管理 （行政）"
+
+#: portal/factory.py:173
+msgid "Account (Support)"
+msgstr "账号管理 （客服）"
+
+#: portal/factory.py:176
+msgid "Account (Technician)"
+msgstr "账号管理 （技术）"
+
+#: portal/factory.py:179
+msgid "Account (Client)"
+msgstr "账号管理 （客人）"
+
+#: portal/factory.py:182 portal/templates/account/handson_batch.html:22
+msgid "Batch Add"
+msgstr "批量添加"
+
+#: portal/factory.py:186 portal/templates/user/member_page.html:175
+msgid "Vps"
+msgstr "Vps"
+
+#: portal/factory.py:190 portal/templates/account/details.html:12
+#: portal/templates/admin/model/list.html:23
+#: portal/templates/admin/model/list.html:25
+#: portal/templates/instruction/create.html:41
+msgid "Create"
+msgstr "创建"
+
+#: portal/account/models.py:364 portal/account/models.py:367
+#: portal/factory.py:193 portal/permission/views.py:21
+#: portal/templates/account/handson_batch.html:89
+msgid "Vendor"
+msgstr "供应商"
+
+#: portal/factory.py:202
+msgid "Finance"
+msgstr "财务"
+
+#: portal/account/models.py:53
+msgid "Account requires attention. Do Not Use."
+msgstr "账号有问题。请不要用"
+
+#: portal/account/models.py:55
+msgid "Client requested this account to be appealed."
+msgstr "客人要求申诉这个账号。"
+
+#: portal/account/models.py:57
+msgid "Appeal has been submitted."
+msgstr "申诉已提交。"
+
+#: portal/account/models.py:59
+msgid "Account is not ready"
+msgstr "账号未准备"
+
+#: portal/account/models.py:61
+msgid "Account is free for use for anyone"
+msgstr "账号可以任意分配"
+
+#: portal/account/models.py:63
+msgid ""
+"Account is already assigned to someone. However, this account has <b>NOT</b> "
+"been accessed yet. In the event of an emergency, you may reassign this to "
+"somebody else."
+msgstr ""
+"账号已分配给客人。但这号未开过给客人。在特殊情况下我们可以把这个账号分配给其他"
+"客户"
+
+#: portal/account/models.py:65
+msgid "Account has ad approved and is spending."
+msgstr "账号的广告已通过。正在消耗"
+
+#: portal/account/models.py:67
+msgid "Account has ad disapproved."
+msgstr "账号有广告不通过"
+
+#: portal/account/models.py:69
+msgid "We no longer want to deal with this account anymore."
+msgstr "我们确定放弃这个账号"
+
+#: portal/account/models.py:71
+msgid "Account is suspended."
+msgstr "账号挂了"
+
+#: portal/account/models.py:261
+msgid "Vendor permissions not defined."
+msgstr "供应商权限未定义好。"
+
+#: portal/account/models.py:264
+msgid "Vendor is empty."
+msgstr "供应商不存在。"
+
+#: portal/account/models.py:306
+#: portal/templates/account/important_widgets.html:34
+#: portal/templates/account/important_widgets.html:98
+#: portal/templates/account/important_widgets.html:150
+#: portal/templates/user/member_page.html:23
+#: portal/templates/user/member_page.html:170
+#: portal/templates/user/member_page.html:208
+msgid "Adwords_id"
+msgstr "账号ID"
+
+#: portal/account/models.py:308
+msgid "Nickname"
+msgstr "花名"
+
+#: portal/account/models.py:310 portal/templates/account/handson_batch.html:54
+#: portal/templates/account/important_widgets.html:151
+#: portal/templates/user/member_page.html:24
+#: portal/templates/user/member_page.html:171
+msgid "Status"
+msgstr "状态"
+
+#: portal/account/models.py:316
+msgid "Last Visited by Eve"
+msgstr "系统更新于"
+
+#: portal/account/models.py:319 portal/templates/user/member_page.html:172
+msgid "Client ID"
+msgstr "客户ID"
+
+#: portal/account/models.py:321 portal/templates/account/handson_batch.html:59
+msgid "Client Name"
+msgstr "客户名称"
+
+#: portal/account/models.py:323
+msgid "Clients Allowed"
+msgstr "可分配的客户"
+
+#: portal/account/models.py:326
+msgid "Is auto_tag ON?"
+msgstr "追踪启动了？"
+
+#: portal/account/models.py:329 portal/templates/account/handson_batch.html:64
+msgid "Is Unlimited?"
+msgstr "无限？"
+
+#: portal/account/models.py:332 portal/templates/account/handson_batch.html:69
+msgid "Account Budget"
+msgstr "账号预算"
+
+#: portal/account/models.py:335
+msgid "Account Budget Override"
+msgstr ""
+
+#: portal/account/models.py:338
+msgid "Remaining Account Balance"
+msgstr "账号余额"
+
+#: portal/account/models.py:341
+msgid "Remaining Account Balance Override"
+msgstr "账号余额(人手)"
+
+#: portal/account/models.py:344
+#: portal/templates/account/important_widgets.html:100
+#: portal/templates/user/member_page.html:209
+msgid "Daily Budget"
+msgstr "每日开支"
+
+#: portal/account/models.py:347
+msgid "Percentage Spent"
+msgstr "消费（百分比）"
+
+#: portal/account/models.py:349
+#: portal/templates/account/important_widgets.html:35
+msgid "Days Left"
+msgstr "剩下日子"
+
+#: portal/account/models.py:351 portal/templates/account/handson_batch.html:79
+#: portal/transfer/views.py:22
+msgid "Currency"
+msgstr "货币"
+
+#: portal/account/models.py:353 portal/templates/account/handson_batch.html:84
+#: portal/transfer/views.py:24
+msgid "Exchange Rate"
+msgstr "汇率"
+
+#: portal/account/models.py:357
+msgid "Spent"
+msgstr "花费"
+
+#: portal/account/models.py:359 portal/templates/user/member_page.html:26
+#: portal/templates/user/member_page.html:173
+#: portal/templates/user/member_page.html:210
+msgid "Spent (HKD)"
+msgstr "花费（港币）"
+
+#: portal/account/models.py:361
+msgid "Remaining (HKD)"
+msgstr "余额（港币）"
+
+#: portal/account/models.py:369
+msgid "Days To Topup"
+msgstr "充值时间（工作天）"
+
+#: portal/account/models.py:372 portal/templates/account/handson_batch.html:94
+msgid "Batch"
+msgstr "账号批次"
+
+#: portal/account/models.py:375 portal/templates/account/handson_batch.html:99
+#: portal/templates/account/important_widgets.html:36
+#: portal/templates/account/important_widgets.html:101
+msgid "VPS"
+msgstr "VPS"
+
+#: portal/account/models.py:377 portal/templates/account/handson_batch.html:104
+#: portal/vps/views.py:39
+msgid "Login"
+msgstr "登录"
+
+#: portal/account/models.py:379 portal/templates/account/handson_batch.html:109
+#: portal/vps/views.py:41
+msgid "Password"
+msgstr "登录密码"
+
+#: portal/account/models.py:382
+msgid "External Comment"
+msgstr "评语（外）"
+
+#: portal/account/models.py:384 portal/templates/account/handson_batch.html:114
+msgid "Internal Comment"
+msgstr "评语（内）"
+
+#: portal/account/utils.py:53
+msgid "accessed this account."
+msgstr "开号"
+
+#: portal/account/utils.py:115
+msgid "created "
+msgstr "创建"
+
+#: portal/account/utils.py:117
+msgid "updated "
+msgstr "更新"
+
+#: portal/account/utils.py:119
+msgid "deleted."
+msgstr "删除"
+
+#: portal/account/views.py:64
+msgid "Adwords ID must be in the format of 123-456-7890."
+msgstr "账号ID 需要必须采用这种格式：111-222-3333。"
+
+#: portal/account/widgets.py:88
+msgid "Accounts not updated since: %s"
+msgstr "从 %s 开始，以下的账号预算还没有跟新"
+
+#: portal/bank_account/views.py:9
+msgid "Bank Account Name"
+msgstr "银行账户名称"
+
+#: portal/bank_account/views.py:10
+msgid "Bank Account Details"
+msgstr "銀行帳戶明細"
+
+#: portal/bank_account/views.py:11
+msgid ""
+"Include SWIFT, Intermediate Bank Information, USD/HKD account numbers, etc."
+msgstr "包括SWIFT，中间银行资料，港币、美金账号等"
+
+#: portal/bank_account/views.py:12
+msgid "Vendors"
+msgstr "供应商"
+
+#: portal/bank_account/views.py:13
+msgid "Select Multiple if necessary"
+msgstr "如有需要，请选择多"
+
+#: portal/bank_account/views.py:14
+msgid "Transfers Count"
+msgstr "汇款/退款"
+
+#: portal/bank_account/views.py:15
+msgid "Number of transfers associated with this Bank Account."
+msgstr "与此银行帐户关联的汇/退款"
+
+#: portal/bank_account/views.py:16
+msgid "Total Sent HKD"
+msgstr "总汇款（港币）"
+
+#: portal/bank_account/views.py:17
+msgid "Total HKD sent to this Bank Account."
+msgstr "我们打了多小钱去这个银行账号？"
+
+#: portal/bank_account/views.py:18
+msgid "Total Spent HKD"
+msgstr "总花额（港币）"
+
+#: portal/bank_account/views.py:19
+msgid ""
+"Total HKD spent by Adword Accounts associated to this to this Bank Account."
+msgstr "所有 Adwords 账号总共花了多小？"
+
+#: portal/bank_account/views.py:20
+msgid "Total Remaining HKD"
+msgstr "余额（港币）"
+
+#: portal/bank_account/views.py:21
+msgid ""
+"Total HKD remaining in all Adwords Accounts associated to this Bank Account."
+msgstr "所有adwords 账号内的金额"
+
+#: portal/bank_account/views.py:22
+msgid "Total Outstanding HKD"
+msgstr "最终金额"
+
+#: portal/bank_account/views.py:23
+msgid "Sent - (Spent + Remaining)"
+msgstr "汇款 -（花额 +余额）"
+
+#: portal/permission/forms.py:23
+#, python-format
+msgid ""
+"User(id=%(user_id)s) is not allowed to use accounts from Vendor(id="
+"%(vendor_id)s)."
+msgstr "用户(id=%(user_id)s) 没有权限使用 供应商(id=%(vendor_id)s) 的账号。"
+
+#: portal/permission/views.py:23 portal/transfer/views.py:26
+msgid "Notes"
+msgstr "注意"
+
+#: portal/templates/account/details.html:8
+#: portal/templates/admin/model/list.html:17
+#: portal/templates/instruction/create.html:38
+msgid "List"
+msgstr "目录"
+
+#: portal/templates/account/details.html:17
+msgid "Edit"
+msgstr "编辑"
+
+#: portal/templates/account/details.html:21
+msgid "Details"
+msgstr "细节"
+
+#: portal/templates/account/details.html:28
+msgid "Filter"
+msgstr "过滤"
+
+#: portal/templates/account/handson_batch.html:24
+msgid "Please read this PPT first."
+msgstr "请先看以下的PPT。"
+
+#: portal/templates/account/handson_batch.html:29
+msgid "Copy these values somewhere:"
+msgstr "抄下以下的数据："
+
+#: portal/templates/account/handson_batch.html:36
+msgid "Explanations of columns:"
+msgstr "表的解释："
+
+#: portal/templates/account/handson_batch.html:42
+msgid "Field"
+msgstr "名称"
+
+#: portal/templates/account/handson_batch.html:43
+msgid "Number in Photo"
+msgstr "图内的号码"
+
+#: portal/templates/account/handson_batch.html:44
+#: portal/templates/account/list.html:112
+msgid "Explanation"
+msgstr "解释"
+
+#: portal/templates/account/handson_batch.html:49
+msgid "Adwords ID"
+msgstr "账号ID"
+
+#: portal/templates/account/handson_batch.html:51
+#: portal/templates/account/handson_batch.html:71
+#: portal/templates/account/handson_batch.html:106
+msgid "See picture above."
+msgstr "请看上图。"
+
+#: portal/templates/account/handson_batch.html:56
+msgid "Put \"Unassigned\" if not sure."
+msgstr "如不清楚，请放『新号』。"
+
+#: portal/templates/account/handson_batch.html:61
+msgid "If there is a client please select \"Reserved\" for this account."
+msgstr "如有客人，请把<u>状态</u>填成『已分配』"
+
+#: portal/templates/account/handson_batch.html:66
+msgid "Normally this is not selected."
+msgstr "一般情况下选空。"
+
+#: portal/templates/account/handson_batch.html:74
+#: portal/templates/user/member_page.html:25
+msgid "Remaining Account Budget"
+msgstr "账号余额"
+
+#: portal/templates/account/handson_batch.html:76
+msgid "<b>Add this if possible</b>. Needed for computing vendor balances."
+msgstr "<b>必须填写</b>，用来统计供应商支出"
+
+#: portal/templates/account/handson_batch.html:81
+msgid "CN￥= RMB, HKD$ = HKD, etc"
+msgstr "CN￥= RMB, HKD$ = 港币, 等"
+
+#: portal/templates/account/handson_batch.html:86
+#: portal/templates/account/handson_batch.html:96
+#: portal/templates/account/handson_batch.html:111
+msgid "If unsure, ask."
+msgstr "如不清楚，请在群问。"
+
+#: portal/templates/account/handson_batch.html:91
+msgid "If the vendor is not here, please leave it empty and notify Vincent."
+msgstr "如果供应商不在，请通知群内"
+
+#: portal/templates/account/handson_batch.html:101
+msgid "Which VPS did you access this account?"
+msgstr "你现在用什么VPS登录？"
+
+#: portal/templates/account/handson_batch.html:116
+msgid "Anything special? Comment it here."
+msgstr "有没有特殊情况？"
+
+#: portal/templates/account/handson_batch.html:124
+msgid "Fill in the data for each account."
+msgstr "请把每个账号填写资料。"
+
+#: portal/templates/account/handson_batch.html:126
+msgid "Add 5 More Rows"
+msgstr "加多五行"
+
+#: portal/templates/account/handson_batch.html:128
+msgid "Press \"Submit\" to check if you have input all your data correctly."
+msgstr "当你输入了所有数据，请按【提交】来检查一下。"
+
+#: portal/templates/account/handson_batch.html:130
+msgid "Submit"
+msgstr "提交"
+
+#: portal/templates/account/handson_batch.html:133
+msgid "Check if you have errors."
+msgstr "检查一下你有没有输入不正确的数据。"
+
+#: portal/templates/account/handson_batch.html:135
+msgid "Press \"Submit\" when you have finished adding data to the table."
+msgstr "当你把账号资料输入完之后，请安【提交】"
+
+#: portal/templates/account/important_widgets.html:37
+msgid "Contact Name"
+msgstr "联系人名字"
+
+#: portal/templates/account/important_widgets.html:99
+#: portal/templates/user/member_page.html:27
+msgid "Updated At"
+msgstr "更新于"
+
+#: portal/templates/account/important_widgets.html:142
+msgid "Accounts With Problems"
+msgstr "有问题的账号"
+
+#: portal/templates/account/list.html:115
+msgid "Show/Hide Columns"
+msgstr "显示/隐藏表列"
+
+#: portal/templates/account/list.html:118
+msgid "Filters"
+msgstr "过滤"
+
+#: portal/templates/account/list.html:165
+msgid "Stage"
+msgstr "阶段"
+
+#: portal/templates/account/list.html:166 portal/vps/views.py:27
+msgid "Name"
+msgstr "名称"
+
+#: portal/templates/account/list.html:167
+msgid "Description"
+msgstr "描述"
+
+#: portal/templates/account/list.html:208 portal/templates/admin/lib.html:191
+msgid "Save"
+msgstr "保存"
+
+#: portal/templates/account/list.html:209
+msgid "Clear"
+msgstr "重启"
+
+#: portal/templates/account/list.html:235
+msgid "select all records"
+msgstr "选择所有记录"
+
+#: portal/templates/account/list.html:248 portal/templates/account/list.html:257
+#, python-format
+msgid "sort by %(name)s"
+msgstr "按 %(name)s 排序"
+
+#: portal/templates/account/list.html:278
+#: portal/templates/admin/model/list.html:120
+msgid "Select record"
+msgstr "选择记录"
+
+#: portal/templates/admin/base.html:96
+msgid "Language"
+msgstr "语言"
+
+#: portal/templates/admin/base.html:98
+msgid "English"
+msgstr "英文"
+
+#: portal/templates/admin/base.html:99
+msgid "Chinese"
+msgstr "中文"
+
+#: portal/templates/admin/base.html:108
+msgid "Profile"
+msgstr "设置"
+
+#: portal/templates/admin/base.html:109
+msgid "Sign out"
+msgstr "登出"
+
+#: portal/templates/admin/base.html:113
+msgid "Sign Up"
+msgstr "注册"
+
+#: portal/templates/admin/base.html:114
+msgid "Sign in"
+msgstr "登录"
+
+#: portal/templates/admin/lib.html:196
+msgid "Cancel"
+msgstr "取消"
+
+#: portal/templates/admin/lib.html:248
+msgid "Save and Add Another"
+msgstr "保存并添加另一个"
+
+#: portal/templates/admin/lib.html:251
+msgid "Save and Continue Editing"
+msgstr "保存并继续编辑"
+
+#: portal/templates/admin/model/list.html:23
+#: portal/templates/admin/model/list.html:25
+msgid "Create New Record"
+msgstr "创新"
+
+#: portal/templates/admin/model/list.html:77
+msgid "Select all records"
+msgstr "选择所有"
+
+#: portal/templates/admin/model/list.html:90
+#: portal/templates/admin/model/list.html:99
+#, python-format
+msgid "Sort by %(name)s"
+msgstr "以%(name)s 排序"
+
+#: portal/templates/admin/model/list.html:187
+msgid "Please select at least one record."
+msgstr "请选择最小一行。"
+
+#: portal/templates/user/member_page.html:15
+msgid "Recent Suspensions or Abandoned"
+msgstr "最近被封或废弃的账号"
+
+#: portal/templates/user/member_page.html:16
+msgid "(From 13th Dec onwards)"
+msgstr "（从12月13号开始）"
+
+#: portal/templates/user/member_page.html:74
+msgid "Updates Today"
+msgstr "今天的变化"
+
+#: portal/templates/user/member_page.html:83
+msgid "No Updates today."
+msgstr "今天没有变化"
+
+#: portal/templates/user/member_page.html:102
+msgid "Total Spending"
+msgstr "总花额"
+
+#: portal/templates/user/member_page.html:163
+msgid "High Spend Accounts"
+msgstr "账号排行榜"
+
+#: portal/templates/user/member_page.html:174
+msgid "Vendor Name"
+msgstr "供应商名字"
+
+#: portal/templates/user/member_page.html:176
+msgid "Suspended On"
+msgstr "挂号与"
+
+#: portal/templates/user/member_page.html:204
+msgid "No Active Accounts"
+msgstr "没有现行的账号"
+
+#: portal/templates/vendor/list.html:95
+msgid "Vendor Statistics By Users"
+msgstr "供应商与客户的统计"
+
+#: portal/templates/vendor/list.html:110
+msgid "Vendor ID"
+msgstr "供应商 ID"
+
+#: portal/templates/vendor/list.html:111
+msgid "Account Activated"
+msgstr "跑过的账号"
+
+#: portal/templates/vendor/list.html:112
+msgid "Total Spent"
+msgstr "总花额"
+
+#: portal/templates/vendor/list.html:113
+msgid "Average Spent"
+msgstr "平均花额"
+
+#: portal/templates/vendor/list.html:122
+msgid "Division By Zero"
+msgstr "除于零"
+
+#: portal/transfer/views.py:12
+msgid "Date"
+msgstr "日期"
+
+#: portal/transfer/views.py:13
+msgid "Date shown on the check."
+msgstr "支票的日期"
+
+#: portal/transfer/views.py:14 portal/transfer/views.py:49
+msgid "Bank Account"
+msgstr "银行账号"
+
+#: portal/transfer/views.py:15
+msgid "Counter Party"
+msgstr "另一方"
+
+#: portal/transfer/views.py:16
+msgid "If payment, this is \"origin\". If refund, this is \"destination\"."
+msgstr "如果付款，这是“原产地”。 如果退款，这是“目的地”。"
+
+#: portal/transfer/views.py:17
+msgid "Refund?"
+msgstr "退款？"
+
+#: portal/transfer/views.py:18
+msgid "Gross Amount"
+msgstr "总额"
+
+#: portal/transfer/views.py:19
+msgid "This is the number that appears on the check. If refund, use negative."
+msgstr "支票上的总额。如果是退款，请用负数。"
+
+#: portal/transfer/views.py:20
+msgid "Net Amount"
+msgstr "净额"
+
+#: portal/transfer/views.py:21
+msgid "Total amount we can spend. This is typically gross - service fee."
+msgstr "我们可以花费的广告金额。 这通常是总额减手续费。"
+
+#: portal/transfer/views.py:23
+msgid "USD, HKD, RMB, SGD"
+msgstr "USD, HKD, RMB, SGD"
+
+#: portal/transfer/views.py:25
+msgid "X * Exchange Rate = X in HKD"
+msgstr "X * 汇率 = X (港币）"
+
+#: portal/utils/EnumRelated.py:48
+msgid "Not a valid choice"
+msgstr "非有效的选择"
+
+#: portal/utils/EnumRelated.py:70
+msgid "No"
+msgstr "否"
+
+#: portal/utils/EnumRelated.py:71
+msgid "Yes"
+msgstr "是"
+
+#: portal/vendor/views.py:44
+msgid "ID must be in the format of 1234-1234-1234."
+msgstr "ID 必须格式为1234-1234-1234。"
+
+#: portal/vendor/views.py:49
+msgid "ID must be in the format of 1234-1234-1234-1234"
+msgstr "账号ID 需要必须采用这种格式：111-222-3333。"
+
+#: portal/vps/views.py:29
+msgid "Deleted?"
+msgstr "删除了？"
+
+#: portal/vps/views.py:30
+msgid "Has the VPS been deleted?"
+msgstr "VPS 解放了吗？"
+
+#: portal/vps/views.py:31
+msgid "Instance ID"
+msgstr "实例 ID"
+
+#: portal/vps/views.py:32
+msgid "i-00166a8b8c34e7265"
+msgstr "i-00166a8b8c34e7265"
+
+#: portal/vps/views.py:33
+msgid "Provider"
+msgstr "供应商"
+
+#: portal/vps/views.py:34
+msgid "AWS/Aliyun/Digital Ocean"
+msgstr "AWS/Aliyun/Digital Ocean"
+
+#: portal/vps/views.py:35
+msgid "Country"
+msgstr "国家"
+
+#: portal/vps/views.py:36
+msgid "Hong Kong/Japan/China"
+msgstr "Hong Kong/Japan/China"
+
+#: portal/vps/views.py:37
+msgid "Ip Address"
+msgstr "IP 地址"
+
+#: portal/vps/views.py:38
+msgid "1.2.3.4"
+msgstr "1.2.3.4"
+
+#: portal/vps/views.py:40
+msgid "AWS default login: Administrator"
+msgstr "亚马逊默认登录：Administrator"
+
+#: portal/vps/views.py:42
+msgid "AWS default password: qweASD123"
+msgstr "亚马逊默认密码：qweASD123"
+
+#: portal/vps/views.py:43
+msgid "API Key"
+msgstr "API 登录"
+
+#: portal/vps/views.py:44 portal/vps/views.py:46
+msgid "If changed please update on VPS's chrome extension"
+msgstr "如果更改, 请更新 VPS 的 chrome 扩展"
+
+#: portal/vps/views.py:45
+msgid "API Secret"
+msgstr "API 密码"
+
+#~ msgid ""
+#~ "Total amount sent to bank_account. This is the number you write on your "
+#~ "check."
+#~ msgstr "发送到银行账号的总金额。 这是你在支票上写的数字。"
+
+#~ msgid "User (id=%s) is not allowed to use accounts from this vendor (id=%s)!"
+#~ msgstr "用户 (id=%s) 没有权限使用这供应商(id=%s)的账号！"
+
+#~ msgid ""
+#~ "User, id=%(user_id)s, is not allowed to use accounts from this vendor, id="
+#~ "%(vendor_id)s!"
+#~ msgstr ""
+#~ "用户, id=%(user_id)s, 没有权限使用这供应商, id=%(vendor_id)s, 的账号！"
+
+#~ msgid "User Management"
+#~ msgstr "用户管理"
+
+#~ msgid "Record does not exist."
+#~ msgstr "记录不存在。"
+
+#~ msgid "Record was successfully deleted."
+#~ msgstr "记录已成功被删除。"
+
+#~ msgid "Failed to create record. %(error)s"
+#~ msgstr "无法创建记录。%(error)s"
+
+#~ msgid "Failed to update record. %(error)s"
+#~ msgstr "无法更新记录。%(error)s"
+
+#~ msgid "Failed to delete record. %(error)s"
+#~ msgstr "无法删除记录。%(error)s"
+
+#~ msgid "Suggested Net"
+#~ msgstr "系统提议的净额"
+
+#~ msgid ""
+#~ "Based on the Vendor's service fees, this is what the system recommends as "
+#~ "Net."
+#~ msgstr "根据供应商的服务费用，这是系统推荐的净额。"
+
+#~ msgid "IP Address"
+#~ msgstr "IP 地址"
+
+#~ msgid "Is Deleted?"
+#~ msgstr "删除了吗？"
+
+#~ msgid "Alive Accounts"
+#~ msgstr "未死的账号"
+
+#~ msgid "Dead Accounts"
+#~ msgstr "挂了的账号"
+
+#~ msgid "Administrator"
+#~ msgstr "Administrator"
+
+#~ msgid "qweASD123/qweASD123456789/..."
+#~ msgstr "qweASD123/qweASD123456789/…"
+
+#~ msgid "Budget Not Updated since"
+#~ msgstr "预算还没更新："
+
+#~ msgid "Expiring Soon"
+#~ msgstr "立刻没钱"
+
+#~ msgid ""
+#~ "<b>Active</b> accounts with neither <u>account_budget</u>, "
+#~ "<u>remaining_account_budget</u>, nor <u>daily_budget</u> updated today."
+#~ msgstr ""
+#~ "<u>账号预算</u>、<u>账号余额</u>、<u>每日开支</u> 没有在今天内更新过的 <b>"
+#~ "现行的账号</b>。"
+
+#~ msgid "Releasable VPS "
+#~ msgstr "能释放的VPS"
+
+#~ msgid "Active Accounts"
+#~ msgstr "现行的账号"
+
+#~ msgid "Total Spent In HKD For Account"
+#~ msgstr "总花额（港币）"
+
+#~ msgid "Accounts not visited from Eve between "
+#~ msgstr "账号没有更新于："
+
+#~ msgid "Accounts not updated since: "
+#~ msgstr "账号预算没有跟新：从"

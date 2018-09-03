@@ -1,0 +1,146 @@
+{% extends "admin/master.html" %}
+
+
+{% block head_css %}
+{{ super() }}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/handsontable/0.35.0/handsontable.min.css" rel="stylesheet">
+<style>
+  h3 {
+    margin-top: 40px;
+  }
+  .handsontable .error {
+    background: #ffcccc
+  }
+  .handsontable .success {
+    background: #dff0d8
+  }
+</style>
+{% endblock %}
+
+
+{% block body %}
+<h1>{{ _('Batch Add') }}</h1>
+
+<h3>1. {{ _('Please read this PPT first.') }}</h3>
+<h4>
+  <a target="_blank" href='https://docs.google.com/presentation/d/1vBkujjshPlNmQBG5MDtmUqjNAGfVoMFT8IiRVq-7Q8k/edit?usp=sharing'>https://docs.google.com/presentation/d/1vBkujjshPlNmQBG5MDtmUqjNAGfVoMFT8IiRVq-7Q8k</a></em>
+</h4>
+
+<h3>2. {{ _('Copy these values somewhere:') }}</h3>
+<div class='row'>
+  <div class='col-md-9'>
+    <img src='https://i.imgur.com/iEq0U04.png' style='width: 100%;'/>
+  </div>
+</div>
+
+<h3>3. {{ _('Explanations of columns:') }}</h3>
+<div class='row'>
+  <div class='col-md-9'>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>{{ _('Field') }}</th>
+          <th>{{ _('Number in Photo') }}</th>
+          <th>{{ _('Explanation') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ _('Adwords ID') }}</td>
+          <th>1</th>
+          <td>{{ _('See picture above.') }}</td>
+        </tr>
+        <tr>
+          <td>{{ _('Status') }}</td>
+          <th></th>
+          <td>{{ _('Put "Unassigned" if not sure.') }}</td>
+        </tr>
+        <tr>
+          <td>{{ _('Client Name') }}</td>
+          <th></th>
+          <td>{{ _('If there is a client please select "Reserved" for this account.') }}</td>
+        </tr>
+        <tr>
+          <td>{{ _('Is Unlimited?') }}</td>
+          <th></th>
+          <td>{{ _('Normally this is not selected.') }}</td>
+        </tr>
+        <tr>
+          <td>{{ _('Account Budget') }}</td>
+          <th>3</th>
+          <td>{{ _('See picture above.') }}</td>
+        </tr>
+        <tr>
+          <td>{{ _('Remaining Account Budget') }}</td>
+          <th>5</th>
+          <td>{{ _('<b>Add this if possible</b>. Needed for computing vendor balances.') }}</td>
+        </tr>
+        <tr>
+          <td>{{ _('Currency') }}</td>
+          <th></th>
+          <td>{{ _('CN￥= RMB, HKD$ = HKD, etc') }}</td>
+        </tr>
+        <tr>
+          <td>{{ _('Exchange Rate') }}</td>
+          <th></th>
+          <td>{{ _('If unsure, ask.') }}</td>
+        </tr>
+        <tr>
+          <td>{{ _('Vendor') }}</td>
+          <th>2</th>
+          <td>{{ _('If the vendor is not here, please leave it empty and notify Vincent.') }}</td>
+        </tr>
+        <tr>
+          <td>{{ _('Batch') }}</td>
+          <th></th>
+          <td>{{ _('If unsure, ask.') }}</td>
+        </tr>
+        <tr>
+          <td>{{ _('VPS') }}</td>
+          <th></th>
+          <td>{{ _('Which VPS did you access this account?') }}</td>
+        </tr>
+        <tr>
+          <td>{{ _('Login') }}</td>
+          <th>4</th>
+          <td>{{ _('See picture above.') }}</td>
+        </tr>
+        <tr>
+          <td>{{ _('Password') }}</td>
+          <th></th>
+          <td>{{ _('If unsure, ask.') }}</td>
+        </tr>
+        <tr>
+          <td>{{ _('Internal Comment') }}</td>
+          <th></th>
+          <td>{{ _('Anything special? Comment it here.') }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<h3>4. {{ _('Fill in the data for each account.') }}</h3>
+<div id='hotable'></div>
+<button type='button' class='btn-default' id='add_rows' style='margin-top: 1em' >{{ _('Add 5 More Rows') }}</button>
+
+<h3>5. {{ _('Press "Submit" to check if you have input all your data correctly.') }}</h3>
+<span class="glyphicon glyphicon-arrow-right"></span>
+<button type='button' class='btn-default' id='submit'>{{ _('Submit') }}</button>
+<span class="glyphicon glyphicon-arrow-left"></span>
+
+<h3>6. {{ _('Check if you have errors.') }}</h3>
+<pre style='margin-bottom: 10em' id='console'>
+{{ _('Press "Submit" when you have finished adding data to the table.') }}
+</pre>
+
+
+{% endblock %}
+
+
+{% block tail_js %}
+{{ super() }}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handsontable/0.35.0/handsontable.full.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/handson_batch.js') }}"></script>
+{% endblock %}

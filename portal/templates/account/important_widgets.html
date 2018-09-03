@@ -1,0 +1,191 @@
+
+<style>
+    .important-widgets .panel {
+        height: 450px;
+        overflow-y: scroll;
+        margin-bottom: 25px;
+    }
+    .table .merge-tr-above td {
+        border-top: 0;
+    }
+    .table .merge-tr-above td[colspan] {
+        color: gray;
+        width: 90%;   /* prevents overflowing */
+    }
+</style>
+
+
+<div class='row important-widgets'>
+
+  {% if expiring_widget.is_accessible() %}
+  {% set accounts = expiring_widget.get_data() %}
+
+  <div class='col-md-4'>
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        Expiring Soon
+      </div>
+
+      <div class="panel-body">
+        <table class='table'>
+          <thead>
+            <tr>
+              <th></th>
+              <th>{{ _('Adwords_id') }}</th>
+              <th>{{ _('Days Left') }}</th>
+              <th>{{ _('VPS') }}</th>
+              <th>{{ _('Contact Name') }}</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for account in accounts %}
+
+            <tr>
+              <td>
+                <a href="{{ url_for(get_account_view_endpoint(suffix='details_view'), id=account.id) }}">
+                  <span class="fa fa-pencil glyphicon glyphicon-eye-open"></span>
+                </a>
+                <a href="{{ url_for(get_account_view_endpoint(suffix='edit_view'), id=account.id) }}">
+                  <span class="fa fa-pencil glyphicon glyphicon-pencil"></span>
+                </a>
+              </td>
+              <td>{{ account.adwords_id }}</td>
+              <td>{{ account.days_left if account.days_left is not none }}</td>
+              <td>{{ account.VPSs_jinja }}</td>
+              <td>{{ account.vendor.contact_name if account.vendor is not none }}</td>
+            </tr>
+
+            {% if account.internal_comment %}
+            <tr class='merge-tr-above'>
+              <td></td>
+              <td colspan='4'><em>{{ account.internal_comment }}</em></td>
+            </tr>
+            {% endif %}
+
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  {% endif %}
+
+
+  {% if not_updated_today_widget.is_accessible() %}
+  {% set title, ordered_dict = not_updated_today_widget.get_data() %}
+  <style>
+    table.borderless.table > tbody > tr > td {
+      border-top: none;
+    }
+    table.borderless.table > tbody > tr.border-top > td {
+      border-top: 1px solid #ddd;
+    }
+  </style>
+
+  <div class='col-md-4'>
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        {{ title }}
+      </div>
+
+      <div class="panel-body">
+        <table class='table borderless'>
+          <thead>
+            <tr>
+              <th></th>
+              <th>{{ _('Adwords_id') }}</th>
+              <th>{{ _('Updated At') }}</th>
+              <th>{{ _('Daily Budget') }}</th>
+              <th>{{ _('VPS') }}</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for login, accounts in ordered_dict.items() %}
+              <tr class='border-top'>
+                  <td style='text-align: left;' colspan='5'>MCC: <span style='color:gray'>{{ login }}</span></td>
+              </tr>
+
+              {% for account in accounts %}
+              <tr>
+                <td>
+                  <a href="{{ url_for(get_account_view_endpoint(suffix='details_view'), id=account.id) }}">
+                    <span class="fa fa-pencil glyphicon glyphicon-eye-open"></span>
+                  </a>
+                  <a href="{{ url_for(get_account_view_endpoint(suffix='edit_view'), id=account.id) }}">
+                    <span class="fa fa-pencil glyphicon glyphicon-pencil"></span>
+                  </a>
+                </td>
+                <td>{{ account.adwords_id }}</td>
+                <td>{{ account.last_visited_by_eve|to_hktz|format_datetime }}</td>
+                <td>{{ account.daily_budget }}</td>
+                <td>{{ account.VPSs_jinja }}</td>
+              </tr>
+              {% endfor %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if attention_widget.is_accessible() %}
+  {% set itertups = attention_widget.get_data() %}
+
+  <div class='col-md-4'>
+    <div class="panel panel-danger">
+
+      <div class="panel-heading">
+        {{ _('Accounts With Problems') }}
+      </div>
+
+      <div class="panel-body">
+        <table class='table'>
+          <thead>
+            <tr>
+              <th></th>
+              <th>{{ _('Adwords_id') }}</th>
+              <th>{{ _('Status') }}</th>
+            </tr>
+          </thead>
+
+          {% for status, accounts in itertups %}
+          <tbody>
+            {% for account in accounts %}
+            <tr>
+              <td>
+                <a href="{{ url_for(get_account_view_endpoint(suffix='details_view'), id=account.id) }}">
+                  <span class="fa fa-pencil glyphicon glyphicon-eye-open"></span>
+                </a>
+                <a href="{{ url_for(get_account_view_endpoint(suffix='edit_view'), id=account.id) }}">
+                  <span class="fa fa-pencil glyphicon glyphicon-pencil"></span>
+                </a>
+              </td>
+              <td>{{ account.adwords_id }}</td>
+              <td>{{ account.status.value }}</td>
+            </tr>
+
+            {% if account.internal_comment %}
+            <tr class='merge-tr-above'>
+              <td></td>
+              <td colspan='2'><em>{{ account.internal_comment }}</em></td>
+            </tr>
+            {% endif %}
+
+            {% endfor %}
+          </tbody>
+          {% endfor %}
+
+        </table>
+      </div>
+    </div>
+  </div>
+
+  {% endif %}
+
+</div>
+
+

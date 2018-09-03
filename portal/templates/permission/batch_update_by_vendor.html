@@ -1,0 +1,78 @@
+{% extends "admin/master.html" %}
+{% import 'admin/lib.html' as lib with context %}
+{% import 'admin/static.html' as admin_static with context%}
+{% import 'admin/model/layout.html' as model_layout with context %}
+{% import 'admin/actions.html' as actionlib with context %}
+{% import 'admin/model/row_actions.html' as row_actions with context %}
+
+
+{% block body %}
+
+<h1>Updating Permissions for <em>{{ vendor.company_name }}</em></h1>
+<div style='margin-bottom:30px'></div>
+
+<h2>
+  <span style='color:lightgreen'>Checked Box = Allowed.</span>
+  <span style='color:red'>Unchecked box = Not Allowed.</span>
+</h2>
+<div style='margin-bottom:30px'></div>
+
+<div class='row'>
+  <div class='col-md-6'>
+
+    <form action='.' method=post>
+
+      <table class='table'>
+        <tr>
+          <th>ID</th>
+          <th>User</th>
+          <th>Notes will only be stored if checked</th>
+        </tr>
+
+        {% for user in users %}
+        <tr>
+          <td>{{ user.id }}</th>
+          <td>{{ user.username }}</th>
+          <td>
+            {% set wrapper = permissions[loop.index0] %}
+
+            <input type='checkbox' {% if wrapper.is_checked %} checked {% endif %}
+            name='checkbox-{{ wrapper.html_id}}' />
+
+            <input type='text' name='notes-{{ wrapper.html_id}}' value="{{ wrapper.notes or "" }}" />
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+
+      <input type="submit" value="Submit">
+
+    </form>
+  </div>
+
+  <div class='col-md-3'>
+    <h3>Copy to all boxes:</h3>
+
+    <input type='checkbox' class='copy_checkbox' />
+    <input type='text' class='copy_input' />
+    <button class='copy_button'>Apply</button>
+  </div>
+
+</div>
+
+{{ super() }}
+
+{% endblock %}
+
+
+{% block tail_js %}
+{{ super() }}
+<script>
+  $('.copy_button').click(function() {
+    $('form input[type=checkbox]').prop('checked',
+      $('.copy_checkbox').prop('checked'));
+    $('form input[type=text]').val($('.copy_input').val());
+  });
+</script>
+{% endblock %}
+

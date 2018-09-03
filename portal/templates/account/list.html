@@ -1,0 +1,581 @@
+{% extends 'admin/model/list.html' %}
+
+
+{% block head_css %}
+{{ super() }}
+
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/v/bs/dt-1.10.16/b-1.5.1/b-colvis-1.5.1/b-html5-1.5.1/datatables.min.css"/>
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/yadcf/0.9.1/jquery.dataTables.yadcf.min.css"/>
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/chosen/1.8.2/chosen.min.css"/>
+
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+
+<style>
+  table {
+    font-size: 12px;
+  }
+  th, td {
+    word-wrap: break-word;
+  }
+
+  /* Space for filters for eligibility */
+  .yadcf-filter-wrapper {
+    margin-top: 0.5em;
+    font-weight: normal;
+    font-size: smaller;
+  }
+
+  /* Tabs - merging all elements to the tab extension */
+  .tab-extension {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    padding: 1em;
+  }
+
+  #no-more-tables {
+    padding-top: 1em;
+    margin-left: 0;
+    border-left: 1px solid #ddd !important;
+    border-right: 1px solid #ddd !important;
+  }
+
+  .dataTables_wrapper > .row:first-child {
+    border-left: 1px solid #ddd !important;
+    margin-left: 0;
+    padding-bottom: 0.5em;
+  }
+
+  table.dataTable {     /* Removes gap */
+    margin-top: 0 !important;
+  }
+
+  .dataTables_filter {
+    padding-right: 1em;
+    border-right: 1px solid #ddd;
+  }
+
+  /* Summary */
+  tfoot tr {
+    color: white;
+    background-color: black;
+  }
+
+  /* Fixes chosen selection having zero width */
+  .chosen-container {
+    width: 100% !important;
+  }
+
+  /* Puts scrollbar beneath the footer */
+  .dataTables_scrollBody::-webkit-scrollbar {
+    display: none;
+  }
+
+  .status-suspended, .status-abandoned {
+    background-color: #EDEDEE;
+  }
+  .status-active {
+    background-color: #dff0d8;
+  }
+  .status-attention, .status-appeal-requested, .status-appeal-submitted {
+    background-color: #f2dede;
+  }
+
+  /* X-editable for eligibility */
+  a.editable {
+    color: #333;
+  }
+  a.editable-empty {
+    color: #DD1144;
+  }
+  a.editable-click {
+    border-bottom: none;
+  }
+
+  /* DataTable buttons */
+  .dt-buttons {
+    margin-left: 10px;
+  }
+
+</style>
+{% endblock %}
+
+
+
+{% block model_menu_bar_before_filters %}
+
+{{ super() }}
+
+<li>
+  <a href='#' data-toggle="collapse" data-target=".explanation-wrapper">{{ gettext('Explanation') }}</a>
+</li>
+<li>
+  <a href='#' data-toggle="collapse" data-target=".visibility-wrapper">{{ gettext('Show/Hide Columns') }}</a>
+</li>
+<li>
+  <a href='#' data-toggle="collapse" data-target=".filters-wrapper">{{ gettext('Filters') }}</a>
+</li>
+{% endblock %}
+
+
+
+{% block page_body %}
+<div class="loading">Loading&#8230;</div>
+
+<style>
+.loading {
+  color: white;
+  position: fixed;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index:999999;
+}
+.loading::before{
+  content: '';
+  display: block;
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(1,1,1,1);
+}
+</style>
+
+{{ super() }}
+{% endblock %}
+
+
+
+{% block model_list_table %}
+
+<div class='tab-extension explanation-wrapper collapse'>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>{{ _('Stage') }}</th>
+        <th>{{ _('Name') }}</th>
+        <th>{{ _('Description') }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for tup in AccountStatusHelper.iterall() %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ tup[1] }}</td>
+        <td>{{ _(tup[2])|safe }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class='tab-extension visibility-wrapper collapse'>
+    <div class='row'>
+        {% for column in admin_view.get_dt_columns_jinja(True) | slice(4) %}
+        <div class='col-md-3'>
+            <ul class="list-group">
+                {% for name, label, pos in column %}
+                <li class='list-group-item'>
+                    <input class='toggle-visibility' data-column_name='{{ name }}'
+                        type="checkbox" checked>
+
+                    {{ _(label) if label else name }}
+
+                    {% if admin_view.column_descriptions.get(name) %}
+                    <a class="fa fa-question-circle glyphicon glyphicon-question-sign"
+                        title="{{ admin_view.column_descriptions[name] }}"
+                        href="javascript:void(0)" data-role="tooltip"
+                        ></a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div>
+      <button id='columns-save' type="button" class="btn btn-primary">{{ _('Save') }}</button>
+      <button id='columns-clear' type="button" class="btn btn-danger">{{ _('Clear') }}</button>
+    </div>
+</div>
+
+<div class='tab-extension filters-wrapper collapse container-fluid'>
+    <ul class='list-group'>
+      {% for dic in admin_view.get_dt_filters() %}
+      <li class='list-group-item'>
+        <label>{{ _(dic.label) }}</label>
+        <div style='display: inline-block;' id="{{ dic.filter_container_id }}"></div>
+      </li>
+      {% endfor %}
+    </ul>
+</div>
+
+<div id="no-more-tables">
+</div>
+
+
+{# OVERRIDE: Removing table-striped #}
+<table class="table table-bordered model-list cf">
+    <thead class="cf">
+        <tr>
+            {% block list_header scoped %}
+                {% if actions %}
+                <th class="list-checkbox-column">
+                    <input type="checkbox" name="rowtoggle" class="action-rowtoggle" title="{{ _gettext('select all records') }}" />
+                </th>
+                {% endif %}
+                {% block list_row_actions_header %}
+                    {% if admin_view.column_display_actions %}
+                    <th class="span1">&nbsp;</th>
+                    {% endif %}
+                {% endblock %}
+                {% for c, name in list_columns %}
+                {% set column = loop.index0 %}
+                <th class="column-header col-{{c}}">
+                    {% if admin_view.is_sortable(c) %}
+                        {% if sort_column == column %}
+                            <a href="{{ sort_url(column, true) }}" title="{{ _gettext('sort by %(name)s', name=name) }}">
+                                {{ name }}
+                                {% if sort_desc %}
+                                    <i class="fa fa-chevron-up icon-chevron-up"></i>
+                                {% else %}
+                                    <i class="fa fa-chevron-down icon-chevron-down"></i>
+                                {% endif %}
+                            </a>
+                        {% else %}
+                            <a href="{{ sort_url(column) }}" title="{{ _gettext('sort by %(name)s', name=name) }}">{{ name }}</a>
+                        {% endif %}
+                    {% else %}
+                        {{ _(name) }}
+                    {% endif %}
+                    {% if admin_view.column_descriptions.get(c) %}
+                        <a class="fa fa-question-circle icon-question-sign"
+                           title="{{ admin_view.column_descriptions[c] }}"
+                           href="javascript:void(0)" data-role="tooltip"
+                        ></a>
+                    {% endif %}
+                </th>
+                {% endfor %}
+            {% endblock %}
+        </tr>
+    </thead>
+    {% for row in data %}
+    <tr data-account_id='{{ row.id }}' >
+        {% block list_row scoped %}
+            {% if actions %}
+            <td>
+                <input type="checkbox" name="rowid" class="action-checkbox" value="{{ get_pk_value(row) }}" title="{{ _gettext('Select record') }}" />
+            </td>
+            {% endif %}
+            {% block list_row_actions_column scoped %}
+                {% if admin_view.column_display_actions %}
+                <td class="list-buttons-column">
+                  {% block list_row_actions scoped %}
+                    {% for action in list_row_actions %}
+                    {{ action.render_ctx(get_pk_value(row), row) }}
+                    {% endfor %}
+                  {% endblock %}
+                </td>
+                {%- endif -%}
+            {% endblock %}
+
+            {% for c, name in list_columns %}
+                <td class="col-{{c}}" data-title="{{ name }}">
+                {% if admin_view.is_editable(c) %}
+                    {% set form = list_forms[get_pk_value(row)] %}
+                    {% if form.csrf_token %}
+                    {{ form[c](pk=get_pk_value(row), display_value=get_value(row, c), csrf=form.csrf_token._value()) }}
+                    {% elif c in replacement_bank.field_names %}
+                    {{ form[c](pk=get_pk_value(row), display_value=get_value(row, c), replacement_bank=replacement_bank) }}
+                    {% else %}
+                    {{ form[c](pk=get_pk_value(row), display_value=get_value(row, c)) }}
+                    {% endif %}
+                {% else %}
+                {{ get_value(row, c) }}
+                {% endif %}
+                </td>
+            {% endfor %}
+        {% endblock %}
+    </tr>
+    {% else %}
+    <tr>
+        <td colspan="999">
+            {% block empty_list_message %}
+            <div class="text-center">
+                {{ admin_view.get_empty_list_message() }}
+            </div>
+            {% endblock %}
+        </td>
+    </tr>
+    {% endfor %}
+
+    <tfoot>
+      <tr>
+          {% if actions %}
+          <th class="list-checkbox-column">
+          </th>
+          {% endif %}
+          {% if admin_view.column_display_actions %}
+          <th class="span1">&nbsp;</th>
+          {% endif %}
+
+          {% for c, name in list_columns %}
+          {% set column = loop.index0 %}
+          {% if c == 'adwords_id' %}
+              <th class="column-header col-{{c}}">Total</th>
+          {% else %}
+              <th class="column-header col-{{c}}"></th>
+          {% endif %}
+          {% endfor %}
+      </tr>
+  </tfoot>
+
+</table>
+
+{# OVERRIDE took out pager #}
+
+
+{% endblock %}
+
+
+
+{% block tail_js %}
+{{ super() }}
+
+<script>
+  // Global variable
+  {{ replacement_bank.dump()|safe }}
+
+  // Replace before admin/form.js
+  $('*[data-replacement_id]').each(function(index, el) {
+    let replacement_id = $(el).data('replacement_id');
+    $(el).data('source', replacement_bank[replacement_id]);
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.16/b-1.5.1/b-colvis-1.5.1/b-html5-1.5.1/datatables.min.js"></script>
+<script type="text/javascript" charset="utf8" src='//cdn.datatables.net/plug-ins/1.10.16/api/sum().js'></script>
+<script type="text/javascript" charset="utf8" src="//cdnjs.cloudflare.com/ajax/libs/yadcf/0.9.1/jquery.dataTables.yadcf.min.js"></script>
+
+<script type="text/javascript" charset="utf8" src="//cdnjs.cloudflare.com/ajax/libs/chosen/1.8.2/chosen.jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="//cdnjs.cloudflare.com/ajax/libs/chosen/1.8.2/chosen.proto.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+<script>
+
+$(document).ready(function() {
+
+  $.ajax({
+    'url': 'index_view_data',
+    'success': function(everything) {
+
+      var table = $('.model-list').DataTable({
+        {% if locale == 'zh_CN' %}
+        language: {
+          'url': 'http://cdn.datatables.net/plug-ins/1.10.16/i18n/Chinese.json',
+        },
+        {% endif %}
+
+        scrollX: true,
+
+        pageLength: 10,
+        lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+
+        columnDefs: everything.columnDefs,
+
+        // Adds class to each row depending on status
+        // td.text() now has chinese characters
+        createdRow: function( row, data, dataIndex ) {
+          let css_sel = 'td:nth-child(' + everything.status_pos + ')';
+          let html_text = $(css_sel, row).text().trim();
+          // NUM_ENG_CHINESE
+          let beg = html_text.indexOf('_') + 1;
+          let end = html_text.lastIndexOf('_') - 2;
+          let _prefix = html_text.substr(beg, end);
+          let eng_status = _prefix.replace(/\s/g,'').toLowerCase();
+          $(row).addClass('status-' + eng_status);
+        },
+
+        // Computes summary row
+        drawCallback: function () {
+          var api = this.api();
+
+          $(everything.summary_pos).each(function(i, v) {
+            let num = api.column(v, {page:'current'}).data().sum();
+            num = Math.round(num * 100) / 100;
+            $(api.column(v).footer()).html(num);
+          });
+        },
+
+        // Copy and paste function
+				buttons: [{
+            extend: 'copyHtml5',
+            exportOptions: {
+                modifier: { page: 'current' },
+                columns: [
+                  'adwords_id:name', 'nickname:name', 'status:name',
+                  'updated_at:name', 'client_id:name',
+                  'account_budget:name', 'account_budget_override:name',
+                  'remaining_account_budget:name', 'remaining_account_budget_override:name',
+                  'daily_budget:name', 'percentage_spent:name', 'days_left:name', 'currency:name',
+                  'exchange_rate:name', 'spent:name', 'spent_in_hkd:name',
+                  'remaining_in_hkd:name', 'days_to_topup:name'
+                ],
+            },
+            footer: true,
+        }],
+
+        // Puts scrollbar underneath footer
+        // https://stackoverflow.com/questions/30843811/datatables-plug-in-display-scrollbar-below-tfoot-tag
+        fnInitComplete: function() {
+
+          // Delete loading page
+          $('.loading').hide();
+
+          var device = getBrowserInfo(),
+          horizontalScroll = 0,
+          tableElement = $(this[0]),
+          scrollBody = $('.dataTables_scrollBody'),
+          scrollFoot = $('.dataTables_scrollFoot'),
+          maxScrollLeft,
+          start = { x:0 , y:0 },
+          offset;
+
+          tableElement.on('draw.dt', function() {
+            maxScrollLeft = tableElement.width() - scrollBody.width() + 2;
+          });
+
+          scrollBody.css({ 'overflow-x': 'hidden' });
+
+          scrollFoot.css('overflow-x', 'auto');
+
+          scrollFoot.on('scroll', function(event) {
+            horizontalScroll = scrollFoot.scrollLeft();
+            scrollBody.scrollLeft(horizontalScroll);
+          });
+
+          if((device.isAndroid && !device.isChrome) || device.isiPad
+              || (device.isMac && !device.isFF)) {
+            scrollBody.css({ 'overflow-x': 'auto'});
+          }
+
+          if(device.isAndroid && device.isChrome) {
+            scrollBody[0].addEventListener("touchstart", touchStart, false);
+            scrollBody[0].addEventListener("touchmove", touchMove, false);
+            scrollFoot[0].addEventListener("touchstart", touchStart, false);
+            scrollFoot[0].addEventListener("touchmove", touchMoveFooter, false);
+          }
+
+          if(device.isMac && device.isFF) {
+            scrollBody.on('wheel', function(event) {
+              if(Math.abs(event.originalEvent.deltaY) < 3) {
+                event.preventDefault();
+              }
+              performScroll(event.originalEvent.deltaX);
+            });
+          }
+
+          function performScroll(deltaX) {
+            horizontalScroll = horizontalScroll + deltaX;
+            if(horizontalScroll > maxScrollLeft) {
+              horizontalScroll = maxScrollLeft;
+            } else if(horizontalScroll < 0) {
+              horizontalScroll = 0;
+            }
+            scrollFoot.scrollLeft(horizontalScroll);
+          }
+
+          function touchStart(e) {
+            start.x = e.touches[0].pageX;
+            start.y = e.touches[0].pageY;
+          }
+
+          function touchMove(e) {
+            offset = {};
+            offset.x = start.x - e.touches[0].pageX;
+            offset.y = start.y - e.touches[0].pageY;
+            performScroll(offset.x / 3);
+          }
+
+          function touchMoveFooter(e) {
+            e.preventDefault();
+            touchMove(e);
+          }
+
+          function getBrowserInfo() {
+            return {
+              isiPad: (/\(iPad.*os (\d+)[._](\d+)/i).test(navigator.userAgent) === true || navigator.platform.toLowerCase() === 'ipad',
+              isAndroid: (/\(*Android (\d+)[._](\d+)/i).test(navigator.userAgent),
+              isMac: navigator.platform.toUpperCase().indexOf('MAC') >= 0,
+              isChrome: !!window.chrome,
+              isFF: !!window.sidebar
+            };
+          };
+        }
+
+      });
+
+      yadcf.init(table, everything.filters);
+
+      // Append buttons to the right next to the search
+      table.buttons().container().appendTo('#DataTables_Table_0_filter');
+
+      /*
+       * Column Visibility
+       */
+      let CKEY = 'columns-visibility';
+
+      (function() {
+        let escaped = Cookies.get(CKEY);
+        if (escaped) {
+          let cols = JSON.parse(unescape(escaped));
+
+          for (var name in cols) {
+            let column = table.column(name + ':name'), checked = cols[name];
+            column.visible(checked);
+            $('input[data-column_name="' + name + '"]').attr('checked', checked);
+          }
+        }
+      })();
+
+      $('.toggle-visibility').change(function () {
+        let name = $(this).attr('data-column_name');
+        let column = table.column(name + ':name');
+        column.visible(this.checked);
+      });
+
+      $('#columns-save').click(function() {
+        let temp = {};
+        $('.visibility-wrapper input').each(function() {
+          let k = $(this).data('column_name');
+          temp[k] = this.checked;
+        });
+        Cookies.set(CKEY, JSON.stringify(temp));    // automatically escapes
+        alert('OK');
+      });
+
+      $('#columns-clear').click(function() {
+        Cookies.remove(CKEY);
+        alert('OK - Refresh to see changes.');
+      });
+
+    },
+  });
+});
+</script>
+
+{% endblock %}

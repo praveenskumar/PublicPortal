@@ -1,0 +1,58 @@
+{% extends "admin/model/list.html" %}
+
+
+{% block body %}
+
+<div class='row' style='height:500px; overflow-y:scroll;'>
+
+  <div class='col-md-push-1 col-md-5'>
+    <table class='table'>
+      <tr>
+        <th>ID</th>
+        <th>Vendor</th>
+        <th></th>
+      </tr>
+
+      {% for vendor in vendors %}
+      <tr>
+        <td>{{ vendor.id }}</td>
+        <td>{{ vendor.company_name }}</td>
+        <td>
+          <a href="{{ url_for('permission.batch_update_by_vendor', vendor_id=vendor.id) }}">
+            Edit User Permissions for this Vendor
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+  <div class='col-md-push-1 col-md-5'>
+    <table class='table'>
+      <tr>
+        <th>ID</th>
+        <th>User</th>
+        <th></th>
+      </tr>
+
+      {% for user in users %}
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>
+          <a href="{{ url_for('permission.batch_update_by_user', user_id=user.id) }}">
+            Edit Vendor Permissions for this User
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+</div>
+
+<hr/>
+
+{{ super() }}
+
+{% endblock %}

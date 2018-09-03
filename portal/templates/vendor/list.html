@@ -1,0 +1,82 @@
+{% extends "admin/model/list.html" %}
+
+{% block model_list_table_class %}table model-list{% endblock %}
+
+{% block body %}
+
+{{ super() }}
+<style>
+  tr.not_active {
+    background-color: #dedede;
+    color: #999999;
+  }
+  .col-is_active, .col-contact_name, .col-days_to_topup, .col-service_fee,
+  .col-summary_us, .col-payments_profile_id, .col-count_total, .col-count_bad,
+  .col-percentage_bad, .col-has_bank_account
+  {
+    text-align: center;
+  }
+  .col-is_active, .col-service_fee, .col-days_to_topup, .col-contact_name,
+  .col-percentage_bad
+  {
+    width: 3em;
+  }
+  .col-total_spent_in_hkd {
+    text-align: right;
+  }
+</style>
+
+{% if vendor_mcc_widget.is_accessible() %}
+
+<h2>Vendor MCC</h2>
+
+<style>
+td { padding: 0; }
+</style>
+
+{% set data = vendor_mcc_widget.get_data() %}
+
+<table class='table table-bordered' style='width:75%'>
+{% for company, dd0 in data.items() %}
+    {% for login, alist in dd0.items() %}
+<tr>
+    {% if loop.index == 1 %}
+    <td  style='text-align: center; vertical-align: middle;' rowspan="{{ dd0|length }}">{{ company }}</td>
+    {% endif %}
+    <td style='text-align: center; vertical-align:middle;'>{{ login }}</td>
+    <td>
+        {% for status, count in alist %}
+        <button class="btn btn-default" type="button">
+            {{ status }} <span class="badge">{{ count }}</span>
+        </button>
+        {% endfor %}
+    </td>
+</tr>
+    {% endfor %}
+{% endfor %}
+</table>
+
+{% endif %}
+
+
+
+{% endblock %}
+
+
+{# Rather than copying the entire model/list/table block over, just use javascript #}
+
+{% block tail_js %}
+{{ super() }}
+<script>
+  $(document).ready(function() {
+    $('.col-is_active').each(function() {
+      let text = this.innerHTML.trim();
+      if ("No" == text) {
+        $(this).parent().addClass('not_active');
+      }
+    });
+  });
+</script>
+{% endblock %}
+
+

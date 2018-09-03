@@ -1,0 +1,784 @@
+# Translations template for PROJECT.
+# Copyright (C) 2018 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2018-03-14 20:16+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.5.1\n"
+
+#: portal/factory.py:155
+msgid "Budget"
+msgstr ""
+
+#: portal/factory.py:156
+msgid "Appointments"
+msgstr ""
+
+#: portal/factory.py:159 portal/factory.py:160 portal/permission/views.py:22
+msgid "User"
+msgstr ""
+
+#: portal/factory.py:166
+msgid "Account"
+msgstr ""
+
+#: portal/factory.py:170
+msgid "Account (Admin)"
+msgstr ""
+
+#: portal/factory.py:173
+msgid "Account (Support)"
+msgstr ""
+
+#: portal/factory.py:176
+msgid "Account (Technician)"
+msgstr ""
+
+#: portal/factory.py:179
+msgid "Account (Client)"
+msgstr ""
+
+#: portal/factory.py:182 portal/templates/account/handson_batch.html:22
+msgid "Batch Add"
+msgstr ""
+
+#: portal/factory.py:186 portal/templates/user/member_page.html:175
+msgid "Vps"
+msgstr ""
+
+#: portal/factory.py:190 portal/templates/account/details.html:12
+#: portal/templates/admin/model/list.html:23
+#: portal/templates/admin/model/list.html:25
+#: portal/templates/instruction/create.html:41
+msgid "Create"
+msgstr ""
+
+#: portal/account/models.py:364 portal/account/models.py:367
+#: portal/factory.py:193 portal/permission/views.py:21
+#: portal/templates/account/handson_batch.html:89
+msgid "Vendor"
+msgstr ""
+
+#: portal/factory.py:202
+msgid "Finance"
+msgstr ""
+
+#: portal/account/models.py:53
+msgid "Account requires attention. Do Not Use."
+msgstr ""
+
+#: portal/account/models.py:55
+msgid "Client requested this account to be appealed."
+msgstr ""
+
+#: portal/account/models.py:57
+msgid "Appeal has been submitted."
+msgstr ""
+
+#: portal/account/models.py:59
+msgid "Account is not ready"
+msgstr ""
+
+#: portal/account/models.py:61
+msgid "Account is free for use for anyone"
+msgstr ""
+
+#: portal/account/models.py:63
+msgid ""
+"Account is already assigned to someone. However, this account has "
+"<b>NOT</b> been accessed yet. In the event of an emergency, you may "
+"reassign this to somebody else."
+msgstr ""
+
+#: portal/account/models.py:65
+msgid "Account has ad approved and is spending."
+msgstr ""
+
+#: portal/account/models.py:67
+msgid "Account has ad disapproved."
+msgstr ""
+
+#: portal/account/models.py:69
+msgid "We no longer want to deal with this account anymore."
+msgstr ""
+
+#: portal/account/models.py:71
+msgid "Account is suspended."
+msgstr ""
+
+#: portal/account/models.py:261
+msgid "Vendor permissions not defined."
+msgstr ""
+
+#: portal/account/models.py:264
+msgid "Vendor is empty."
+msgstr ""
+
+#: portal/account/models.py:306
+#: portal/templates/account/important_widgets.html:34
+#: portal/templates/account/important_widgets.html:98
+#: portal/templates/account/important_widgets.html:150
+#: portal/templates/user/member_page.html:23
+#: portal/templates/user/member_page.html:170
+#: portal/templates/user/member_page.html:208
+msgid "Adwords_id"
+msgstr ""
+
+#: portal/account/models.py:308
+msgid "Nickname"
+msgstr ""
+
+#: portal/account/models.py:310 portal/templates/account/handson_batch.html:54
+#: portal/templates/account/important_widgets.html:151
+#: portal/templates/user/member_page.html:24
+#: portal/templates/user/member_page.html:171
+msgid "Status"
+msgstr ""
+
+#: portal/account/models.py:316
+msgid "Last Visited by Eve"
+msgstr ""
+
+#: portal/account/models.py:319 portal/templates/user/member_page.html:172
+msgid "Client ID"
+msgstr ""
+
+#: portal/account/models.py:321 portal/templates/account/handson_batch.html:59
+msgid "Client Name"
+msgstr ""
+
+#: portal/account/models.py:323
+msgid "Clients Allowed"
+msgstr ""
+
+#: portal/account/models.py:326
+msgid "Is auto_tag ON?"
+msgstr ""
+
+#: portal/account/models.py:329 portal/templates/account/handson_batch.html:64
+msgid "Is Unlimited?"
+msgstr ""
+
+#: portal/account/models.py:332 portal/templates/account/handson_batch.html:69
+msgid "Account Budget"
+msgstr ""
+
+#: portal/account/models.py:335
+msgid "Account Budget Override"
+msgstr ""
+
+#: portal/account/models.py:338
+msgid "Remaining Account Balance"
+msgstr ""
+
+#: portal/account/models.py:341
+msgid "Remaining Account Balance Override"
+msgstr ""
+
+#: portal/account/models.py:344
+#: portal/templates/account/important_widgets.html:100
+#: portal/templates/user/member_page.html:209
+msgid "Daily Budget"
+msgstr ""
+
+#: portal/account/models.py:347
+msgid "Percentage Spent"
+msgstr ""
+
+#: portal/account/models.py:349
+#: portal/templates/account/important_widgets.html:35
+msgid "Days Left"
+msgstr ""
+
+#: portal/account/models.py:351 portal/templates/account/handson_batch.html:79
+#: portal/transfer/views.py:22
+msgid "Currency"
+msgstr ""
+
+#: portal/account/models.py:353 portal/templates/account/handson_batch.html:84
+#: portal/transfer/views.py:24
+msgid "Exchange Rate"
+msgstr ""
+
+#: portal/account/models.py:357
+msgid "Spent"
+msgstr ""
+
+#: portal/account/models.py:359 portal/templates/user/member_page.html:26
+#: portal/templates/user/member_page.html:173
+#: portal/templates/user/member_page.html:210
+msgid "Spent (HKD)"
+msgstr ""
+
+#: portal/account/models.py:361
+msgid "Remaining (HKD)"
+msgstr ""
+
+#: portal/account/models.py:369
+msgid "Days To Topup"
+msgstr ""
+
+#: portal/account/models.py:372 portal/templates/account/handson_batch.html:94
+msgid "Batch"
+msgstr ""
+
+#: portal/account/models.py:375 portal/templates/account/handson_batch.html:99
+#: portal/templates/account/important_widgets.html:36
+#: portal/templates/account/important_widgets.html:101
+msgid "VPS"
+msgstr ""
+
+#: portal/account/models.py:377 portal/templates/account/handson_batch.html:104
+#: portal/vps/views.py:39
+msgid "Login"
+msgstr ""
+
+#: portal/account/models.py:379 portal/templates/account/handson_batch.html:109
+#: portal/vps/views.py:41
+msgid "Password"
+msgstr ""
+
+#: portal/account/models.py:382
+msgid "External Comment"
+msgstr ""
+
+#: portal/account/models.py:384 portal/templates/account/handson_batch.html:114
+msgid "Internal Comment"
+msgstr ""
+
+#: portal/account/utils.py:53
+msgid "accessed this account."
+msgstr ""
+
+#: portal/account/utils.py:115
+msgid "created "
+msgstr ""
+
+#: portal/account/utils.py:117
+msgid "updated "
+msgstr ""
+
+#: portal/account/utils.py:119
+msgid "deleted."
+msgstr ""
+
+#: portal/account/views.py:64
+msgid "Adwords ID must be in the format of 123-456-7890."
+msgstr ""
+
+#: portal/account/widgets.py:88
+#, python-format
+msgid "Accounts not updated since: %s"
+msgstr ""
+
+#: portal/bank_account/views.py:9
+msgid "Bank Account Name"
+msgstr ""
+
+#: portal/bank_account/views.py:10
+msgid "Bank Account Details"
+msgstr ""
+
+#: portal/bank_account/views.py:11
+msgid ""
+"Include SWIFT, Intermediate Bank Information, USD/HKD account numbers, "
+"etc."
+msgstr ""
+
+#: portal/bank_account/views.py:12
+msgid "Vendors"
+msgstr ""
+
+#: portal/bank_account/views.py:13
+msgid "Select Multiple if necessary"
+msgstr ""
+
+#: portal/bank_account/views.py:14
+msgid "Transfers Count"
+msgstr ""
+
+#: portal/bank_account/views.py:15
+msgid "Number of transfers associated with this Bank Account."
+msgstr ""
+
+#: portal/bank_account/views.py:16
+msgid "Total Sent HKD"
+msgstr ""
+
+#: portal/bank_account/views.py:17
+msgid "Total HKD sent to this Bank Account."
+msgstr ""
+
+#: portal/bank_account/views.py:18
+msgid "Total Spent HKD"
+msgstr ""
+
+#: portal/bank_account/views.py:19
+msgid ""
+"Total HKD spent by Adword Accounts associated to this to this Bank "
+"Account."
+msgstr ""
+
+#: portal/bank_account/views.py:20
+msgid "Total Remaining HKD"
+msgstr ""
+
+#: portal/bank_account/views.py:21
+msgid ""
+"Total HKD remaining in all Adwords Accounts associated to this Bank "
+"Account."
+msgstr ""
+
+#: portal/bank_account/views.py:22
+msgid "Total Outstanding HKD"
+msgstr ""
+
+#: portal/bank_account/views.py:23
+msgid "Sent - (Spent + Remaining)"
+msgstr ""
+
+#: portal/permission/forms.py:23
+#, python-format
+msgid ""
+"User(id=%(user_id)s) is not allowed to use accounts from "
+"Vendor(id=%(vendor_id)s)."
+msgstr ""
+
+#: portal/permission/views.py:23 portal/transfer/views.py:26
+msgid "Notes"
+msgstr ""
+
+#: portal/templates/account/details.html:8
+#: portal/templates/admin/model/list.html:17
+#: portal/templates/instruction/create.html:38
+msgid "List"
+msgstr ""
+
+#: portal/templates/account/details.html:17
+msgid "Edit"
+msgstr ""
+
+#: portal/templates/account/details.html:21
+msgid "Details"
+msgstr ""
+
+#: portal/templates/account/details.html:28
+msgid "Filter"
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:24
+msgid "Please read this PPT first."
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:29
+msgid "Copy these values somewhere:"
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:36
+msgid "Explanations of columns:"
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:42
+msgid "Field"
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:43
+msgid "Number in Photo"
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:44
+#: portal/templates/account/list.html:112
+msgid "Explanation"
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:49
+msgid "Adwords ID"
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:51
+#: portal/templates/account/handson_batch.html:71
+#: portal/templates/account/handson_batch.html:106
+msgid "See picture above."
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:56
+msgid "Put \"Unassigned\" if not sure."
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:61
+msgid "If there is a client please select \"Reserved\" for this account."
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:66
+msgid "Normally this is not selected."
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:74
+#: portal/templates/user/member_page.html:25
+msgid "Remaining Account Budget"
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:76
+msgid "<b>Add this if possible</b>. Needed for computing vendor balances."
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:81
+msgid "CN￥= RMB, HKD$ = HKD, etc"
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:86
+#: portal/templates/account/handson_batch.html:96
+#: portal/templates/account/handson_batch.html:111
+msgid "If unsure, ask."
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:91
+msgid "If the vendor is not here, please leave it empty and notify Vincent."
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:101
+msgid "Which VPS did you access this account?"
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:116
+msgid "Anything special? Comment it here."
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:124
+msgid "Fill in the data for each account."
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:126
+msgid "Add 5 More Rows"
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:128
+msgid "Press \"Submit\" to check if you have input all your data correctly."
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:130
+msgid "Submit"
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:133
+msgid "Check if you have errors."
+msgstr ""
+
+#: portal/templates/account/handson_batch.html:135
+msgid "Press \"Submit\" when you have finished adding data to the table."
+msgstr ""
+
+#: portal/templates/account/important_widgets.html:37
+msgid "Contact Name"
+msgstr ""
+
+#: portal/templates/account/important_widgets.html:99
+#: portal/templates/user/member_page.html:27
+msgid "Updated At"
+msgstr ""
+
+#: portal/templates/account/important_widgets.html:142
+msgid "Accounts With Problems"
+msgstr ""
+
+#: portal/templates/account/list.html:115
+msgid "Show/Hide Columns"
+msgstr ""
+
+#: portal/templates/account/list.html:118
+msgid "Filters"
+msgstr ""
+
+#: portal/templates/account/list.html:165
+msgid "Stage"
+msgstr ""
+
+#: portal/templates/account/list.html:166 portal/vps/views.py:27
+msgid "Name"
+msgstr ""
+
+#: portal/templates/account/list.html:167
+msgid "Description"
+msgstr ""
+
+#: portal/templates/account/list.html:208 portal/templates/admin/lib.html:191
+msgid "Save"
+msgstr ""
+
+#: portal/templates/account/list.html:209
+msgid "Clear"
+msgstr ""
+
+#: portal/templates/account/list.html:235
+msgid "select all records"
+msgstr ""
+
+#: portal/templates/account/list.html:248
+#: portal/templates/account/list.html:257
+#, python-format
+msgid "sort by %(name)s"
+msgstr ""
+
+#: portal/templates/account/list.html:278
+#: portal/templates/admin/model/list.html:120
+msgid "Select record"
+msgstr ""
+
+#: portal/templates/admin/base.html:96
+msgid "Language"
+msgstr ""
+
+#: portal/templates/admin/base.html:98
+msgid "English"
+msgstr ""
+
+#: portal/templates/admin/base.html:99
+msgid "Chinese"
+msgstr ""
+
+#: portal/templates/admin/base.html:108
+msgid "Profile"
+msgstr ""
+
+#: portal/templates/admin/base.html:109
+msgid "Sign out"
+msgstr ""
+
+#: portal/templates/admin/base.html:113
+msgid "Sign Up"
+msgstr ""
+
+#: portal/templates/admin/base.html:114
+msgid "Sign in"
+msgstr ""
+
+#: portal/templates/admin/lib.html:196
+msgid "Cancel"
+msgstr ""
+
+#: portal/templates/admin/lib.html:248
+msgid "Save and Add Another"
+msgstr ""
+
+#: portal/templates/admin/lib.html:251
+msgid "Save and Continue Editing"
+msgstr ""
+
+#: portal/templates/admin/model/list.html:23
+#: portal/templates/admin/model/list.html:25
+msgid "Create New Record"
+msgstr ""
+
+#: portal/templates/admin/model/list.html:77
+msgid "Select all records"
+msgstr ""
+
+#: portal/templates/admin/model/list.html:90
+#: portal/templates/admin/model/list.html:99
+#, python-format
+msgid "Sort by %(name)s"
+msgstr ""
+
+#: portal/templates/admin/model/list.html:187
+msgid "Please select at least one record."
+msgstr ""
+
+#: portal/templates/user/member_page.html:15
+msgid "Recent Suspensions or Abandoned"
+msgstr ""
+
+#: portal/templates/user/member_page.html:16
+msgid "(From 13th Dec onwards)"
+msgstr ""
+
+#: portal/templates/user/member_page.html:74
+msgid "Updates Today"
+msgstr ""
+
+#: portal/templates/user/member_page.html:83
+msgid "No Updates today."
+msgstr ""
+
+#: portal/templates/user/member_page.html:102
+msgid "Total Spending"
+msgstr ""
+
+#: portal/templates/user/member_page.html:163
+msgid "High Spend Accounts"
+msgstr ""
+
+#: portal/templates/user/member_page.html:174
+msgid "Vendor Name"
+msgstr ""
+
+#: portal/templates/user/member_page.html:176
+msgid "Suspended On"
+msgstr ""
+
+#: portal/templates/user/member_page.html:204
+msgid "No Active Accounts"
+msgstr ""
+
+#: portal/templates/vendor/list.html:95
+msgid "Vendor Statistics By Users"
+msgstr ""
+
+#: portal/templates/vendor/list.html:110
+msgid "Vendor ID"
+msgstr ""
+
+#: portal/templates/vendor/list.html:111
+msgid "Account Activated"
+msgstr ""
+
+#: portal/templates/vendor/list.html:112
+msgid "Total Spent"
+msgstr ""
+
+#: portal/templates/vendor/list.html:113
+msgid "Average Spent"
+msgstr ""
+
+#: portal/templates/vendor/list.html:122
+msgid "Division By Zero"
+msgstr ""
+
+#: portal/transfer/views.py:12
+msgid "Date"
+msgstr ""
+
+#: portal/transfer/views.py:13
+msgid "Date shown on the check."
+msgstr ""
+
+#: portal/transfer/views.py:14 portal/transfer/views.py:49
+msgid "Bank Account"
+msgstr ""
+
+#: portal/transfer/views.py:15
+msgid "Counter Party"
+msgstr ""
+
+#: portal/transfer/views.py:16
+msgid "If payment, this is \"origin\". If refund, this is \"destination\"."
+msgstr ""
+
+#: portal/transfer/views.py:17
+msgid "Refund?"
+msgstr ""
+
+#: portal/transfer/views.py:18
+msgid "Gross Amount"
+msgstr ""
+
+#: portal/transfer/views.py:19
+msgid "This is the number that appears on the check. If refund, use negative."
+msgstr ""
+
+#: portal/transfer/views.py:20
+msgid "Net Amount"
+msgstr ""
+
+#: portal/transfer/views.py:21
+msgid "Total amount we can spend. This is typically gross - service fee."
+msgstr ""
+
+#: portal/transfer/views.py:23
+msgid "USD, HKD, RMB, SGD"
+msgstr ""
+
+#: portal/transfer/views.py:25
+msgid "X * Exchange Rate = X in HKD"
+msgstr ""
+
+#: portal/utils/EnumRelated.py:48
+msgid "Not a valid choice"
+msgstr ""
+
+#: portal/utils/EnumRelated.py:70
+msgid "No"
+msgstr ""
+
+#: portal/utils/EnumRelated.py:71
+msgid "Yes"
+msgstr ""
+
+#: portal/vendor/views.py:44
+msgid "ID must be in the format of 1234-1234-1234."
+msgstr ""
+
+#: portal/vendor/views.py:49
+msgid "ID must be in the format of 1234-1234-1234-1234"
+msgstr ""
+
+#: portal/vps/views.py:29
+msgid "Deleted?"
+msgstr ""
+
+#: portal/vps/views.py:30
+msgid "Has the VPS been deleted?"
+msgstr ""
+
+#: portal/vps/views.py:31
+msgid "Instance ID"
+msgstr ""
+
+#: portal/vps/views.py:32
+msgid "i-00166a8b8c34e7265"
+msgstr ""
+
+#: portal/vps/views.py:33
+msgid "Provider"
+msgstr ""
+
+#: portal/vps/views.py:34
+msgid "AWS/Aliyun/Digital Ocean"
+msgstr ""
+
+#: portal/vps/views.py:35
+msgid "Country"
+msgstr ""
+
+#: portal/vps/views.py:36
+msgid "Hong Kong/Japan/China"
+msgstr ""
+
+#: portal/vps/views.py:37
+msgid "Ip Address"
+msgstr ""
+
+#: portal/vps/views.py:38
+msgid "1.2.3.4"
+msgstr ""
+
+#: portal/vps/views.py:40
+msgid "AWS default login: Administrator"
+msgstr ""
+
+#: portal/vps/views.py:42
+msgid "AWS default password: qweASD123"
+msgstr ""
+
+#: portal/vps/views.py:43
+msgid "API Key"
+msgstr ""
+
+#: portal/vps/views.py:44 portal/vps/views.py:46
+msgid "If changed please update on VPS's chrome extension"
+msgstr ""
+
+#: portal/vps/views.py:45
+msgid "API Secret"
+msgstr ""
+

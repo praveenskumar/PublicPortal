@@ -1,0 +1,56 @@
+{% extends 'admin/master.html' %}
+{% import 'admin/lib.html' as lib with context %}
+{% from 'admin/lib.html' import extra with context %} {# backward compatible #}
+
+{% block head %}
+  {{ super() }}
+  {{ lib.form_css() }}
+{% endblock %}
+
+{% block body %}
+
+  <div class='warnings'>
+    <style>
+      .warnings {
+        background-color: #eee;
+        padding: 30px 60px;
+        margin-bottom: 30px;
+        border-radius: 6px;
+      }
+      .warnings ol {
+        margin-bottom: 15px;
+        font-size: 21px;
+        font-weight: 200;
+      }
+    </style>
+
+    <h1>Warning:</h1>
+    <ol>
+      <li>You must submit your instructions by 8am HKT. </li>
+      <li>Second</li>
+      <li>Third</li>
+    </ol>
+  </div>
+
+  {% block navlinks %}
+  <ul class="nav nav-tabs">
+    <li>
+        <a href="{{ return_url }}">{{ _gettext('List') }}</a>
+    </li>
+    <li class="active">
+        <a href="javascript:void(0)">{{ _gettext('Create') }}</a>
+    </li>
+  </ul>
+  {% endblock %}
+
+  {% block create_form %}
+    {{ lib.render_form(form, return_url, extra(), form_opts) }}
+  {% endblock %}
+
+
+{% endblock %}
+
+{% block tail %}
+  {{ super() }}
+  {{ lib.form_js() }}
+{% endblock %}

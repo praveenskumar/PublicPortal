@@ -1,0 +1,44 @@
+{% extends "admin/model/list.html" %}
+
+
+{% macro render_vendors(model, column) %}
+{% if model.vendors %}
+<ul>
+  {% for vendor in model.vendors %}
+  <li class='{% if not vendor.is_active %} strike-through {% endif %}'>
+    {{ vendor.company_name }}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<span style='color:red;font-weight:bold;'>No vendors!</span>
+{% endif %}
+{% endmacro %}
+
+
+
+{% block body %}
+
+{{ super() }}
+
+<style>
+  .col-name {
+    width: 15em;
+  }
+  .col-vendors {
+    width: 30em;
+  }
+  .col-transfer_count {
+    text-align: center;
+  }
+  .col-total_sent_in_hkd, .col-total_spent_in_hkd,
+  .col-total_remaining_in_hkd, .col-total_remaining_in_hkd {
+    text-align: right;
+  }
+  .strike-through {
+    text-decoration: line-through;
+  }
+</style>
+
+
+{% endblock %}
